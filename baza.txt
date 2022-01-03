@@ -1,0 +1,11 @@
+Users - id,username, password, email, kontakt_telefon, datum_rođenja, ime, prezime, zabranjen_pristup
+
+Klijent - br_pasosa, br_rezervacija, rank_id, user_id
+
+Menadzer - ime_hotela, datum_zaposljavanja, user_id
+
+Admins -
+
+Rank - id, naziv_ranka, min_rez, max_rez, popust
+
+
