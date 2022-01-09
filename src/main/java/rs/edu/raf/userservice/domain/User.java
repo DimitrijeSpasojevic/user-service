@@ -5,7 +5,8 @@ import javax.persistence.MappedSuperclass;
 import java.time.LocalDate;
 import java.util.Date;
 
-@MappedSuperclass
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

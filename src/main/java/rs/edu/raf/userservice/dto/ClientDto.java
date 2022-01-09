@@ -28,8 +28,6 @@ public class ClientDto {
     private Long passportId;
     @NotEmpty(message = "numberOfReservations ne moze da bude prazno")
     private Long numberOfReservations;
-    @NotEmpty(message = "rank ne moze da bude prazno")
-    private Rank rank;
 
     public Long getPassportId() {
         return passportId;
@@ -47,13 +45,6 @@ public class ClientDto {
         this.numberOfReservations = numberOfReservations;
     }
 
-    public Rank getRank() {
-        return rank;
-    }
-
-    public void setRank(Rank rank) {
-        this.rank = rank;
-    }
     public Long getUserId() {
         return userId;
     }

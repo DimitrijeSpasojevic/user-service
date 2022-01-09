@@ -168,4 +168,35 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
         return user.getUserId();
     }
+
+    @Override
+    public Long addReservation(Long clientId) {
+        Client client = clientRepository.findById(clientId)
+                .orElseThrow(() -> new NotFoundException(String.format("Client with id: %d not found", clientId)));
+        client.setNumberOfReservations(client.getNumberOfReservations() + 1);
+        clientRepository.save(client);
+        return client.getNumberOfReservations();
+    }
+
+    @Override
+    public Long deleteReservation(Long clientId) {
+        Client client = clientRepository.findById(clientId)
+                .orElseThrow(() -> new NotFoundException(String.format("Client with id: %d not found", clientId)));
+        client.setNumberOfReservations(client.getNumberOfReservations() - 1);
+        clientRepository.save(client);
+        return client.getNumberOfReservations();
+    }
+
+    @Override
+    public RankDto getRankForClient(Long clientId) {
+        Client client = clientRepository.getById(clientId);
+        Rank rank = rankRepository.findRankByMinReservationLessThanAndMaxReservationGreaterThan(client.getNumberOfReservations(), client.getNumberOfReservations())
+                .orElseThrow(() -> new NotFoundException(String.format("Rank koji obuhvata date opsege ne postoji")));
+        return rankMapper.rankToRankDto(rank);
+    }
+
+    @Override
+    public ClientDto getClient(Long id) {
+        return clientMapper.clientToClientDto(clientRepository.getById(id));
+    }
 }
