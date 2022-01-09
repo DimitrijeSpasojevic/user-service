@@ -1,4 +1,4 @@
-package rs.edu.raf.userservice.secutiry;
+package rs.edu.raf.userservice.security;
 
 
 import io.jsonwebtoken.Claims;
@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import rs.edu.raf.userservice.secutiry.service.TokenService;
+import rs.edu.raf.userservice.security.service.TokenService;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -28,7 +28,7 @@ public class SecurityAspect {
         this.tokenService = tokenService;
     }
 
-    @Around("@annotation(rs.edu.raf.userservice.secutiry.CheckSecurity)")
+    @Around("@annotation(rs.edu.raf.userservice.security.CheckSecurity)")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
         //Get method signature
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();

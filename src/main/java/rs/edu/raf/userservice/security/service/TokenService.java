@@ -1,4 +1,4 @@
-package rs.edu.raf.userservice.secutiry.service;
+package rs.edu.raf.userservice.security.service;
 
 import io.jsonwebtoken.Claims;
 

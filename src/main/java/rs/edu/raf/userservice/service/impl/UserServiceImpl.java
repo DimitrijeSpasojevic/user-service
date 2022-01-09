@@ -8,8 +8,6 @@ import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,7 +24,7 @@ import rs.edu.raf.userservice.repository.ClientRepository;
 import rs.edu.raf.userservice.repository.ManagerRepository;
 import rs.edu.raf.userservice.repository.RankRepository;
 import rs.edu.raf.userservice.repository.UserRepository;
-import rs.edu.raf.userservice.secutiry.service.TokenService;
+import rs.edu.raf.userservice.security.service.TokenService;
 import rs.edu.raf.userservice.service.UserService;
 
 import java.util.ArrayList;
@@ -74,16 +72,18 @@ public class UserServiceImpl implements UserService {
         clientRepository.save(client);
         NotificationParameterDto notificationParameterDto1= new NotificationParameterDto("firstName",createClientDto.getFirstName());
         NotificationParameterDto notificationParameterDto2 = new NotificationParameterDto("lastName",createClientDto.getLastName());
-        NotificationParameterDto notificationParameterDto3 = new NotificationParameterDto("url", "http://localhost:8081/api/user/validate" + client.getUserId());
+        NotificationParameterDto notificationParameterDto3 = new NotificationParameterDto("url", "http://localhost:8081/api/user/validate/" + client.getUserId());
 
         List<NotificationParameterDto> notificationParameterDtos = new ArrayList<>();
         notificationParameterDtos.add(notificationParameterDto1);
         notificationParameterDtos.add(notificationParameterDto2);
         notificationParameterDtos.add(notificationParameterDto3);
-
+        NotificationSendDto notificationSendDto = new NotificationSendDto("activation",
+                                                                          createClientDto.getEmail(),
+                                                                          notificationParameterDtos);
         try {
             jmsTemplate.convertAndSend(this.sendNotificationDestination
-                    ,objectMapper.writeValueAsString(notificationParameterDtos));
+                    ,objectMapper.writeValueAsString(notificationSendDto));
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
@@ -97,7 +97,7 @@ public class UserServiceImpl implements UserService {
         managerRepository.save(manager);
         NotificationParameterDto notificationParameterDto1= new NotificationParameterDto("firstName",createManagerDto.getFirstName());
         NotificationParameterDto notificationParameterDto2 = new NotificationParameterDto("lastName",createManagerDto.getLastName());
-        NotificationParameterDto notificationParameterDto3 = new NotificationParameterDto("url", "http://localhost:8081/api/user/validate" + manager.getUserId());
+        NotificationParameterDto notificationParameterDto3 = new NotificationParameterDto("url", "http://localhost:8081/api/user/validate/" + manager.getUserId());
         List<NotificationParameterDto> notificationParameterDtos = new ArrayList<>();
         notificationParameterDtos.add(notificationParameterDto1);
         notificationParameterDtos.add(notificationParameterDto2);

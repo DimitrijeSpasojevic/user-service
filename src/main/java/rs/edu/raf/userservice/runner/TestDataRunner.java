@@ -34,6 +34,21 @@ public class TestDataRunner implements CommandLineRunner {
         rank1.setMaxReservation(Long.valueOf(20));
         rankRepository.save(rank1);
 
+        Client clientAdmin = new Client();
+        clientAdmin.setPassword("admin");
+        clientAdmin.setEmail("admin@gmail.com");
+        clientAdmin.setUsername("admin");
+        clientAdmin.setPassportId(Long.valueOf(1111111));
+        clientAdmin.setContact("062-553-334");
+        clientAdmin.setFirstName("admin");
+        clientAdmin.setLastName("admin");
+        clientAdmin.setNumberOfReservations(Long.valueOf(0));
+        clientAdmin.setAllowedAccess(true);
+        clientAdmin.setDateOfBirth(LocalDate.of(1988, 1, 1));
+        clientAdmin.setEmailConfirmed(true);
+        clientAdmin.setRole("ROLE_ADMIN");
+        clientRepository.save(clientAdmin);
+
         Client client = new Client();
         client.setPassword("123pass");
         client.setEmail("pera@gmail.com");
@@ -42,10 +57,11 @@ public class TestDataRunner implements CommandLineRunner {
         client.setContact("062-133-415");
         client.setFirstName("Petar");
         client.setLastName("Peric");
-
         client.setNumberOfReservations(Long.valueOf(0));
         client.setAllowedAccess(true);
         client.setDateOfBirth(LocalDate.of(1986, 1, 4));
+        client.setEmailConfirmed(true);
+        client.setRole("ROLE_CLIENT");
         clientRepository.save(client);
     }
 }

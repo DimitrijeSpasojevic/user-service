@@ -6,13 +6,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rs.edu.raf.userservice.dto.ClientDto;
-import rs.edu.raf.userservice.dto.CreateClientDto;
-import rs.edu.raf.userservice.dto.UpdateClientDto;
-import rs.edu.raf.userservice.secutiry.CheckSecurity;
+import rs.edu.raf.userservice.security.CheckSecurity;
 import rs.edu.raf.userservice.service.AdminService;
 import springfox.documentation.annotations.ApiIgnore;
-
-import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/admin")

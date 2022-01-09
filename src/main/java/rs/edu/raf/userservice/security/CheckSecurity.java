@@ -1,4 +1,4 @@
-package rs.edu.raf.userservice.secutiry;
+package rs.edu.raf.userservice.security;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

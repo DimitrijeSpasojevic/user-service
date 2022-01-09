@@ -1,4 +1,4 @@
-package rs.edu.raf.userservice.secutiry.service.impl;
+package rs.edu.raf.userservice.security.service.impl;
 
 
 import io.jsonwebtoken.Claims;
@@ -6,7 +6,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import rs.edu.raf.userservice.secutiry.service.TokenService;
+import rs.edu.raf.userservice.security.service.TokenService;
 
 @Service
 public class TokenServiceImpl implements TokenService {

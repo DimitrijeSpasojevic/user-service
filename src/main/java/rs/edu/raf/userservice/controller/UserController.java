@@ -8,9 +8,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import rs.edu.raf.userservice.domain.Client;
 import rs.edu.raf.userservice.dto.*;
-import rs.edu.raf.userservice.secutiry.CheckSecurity;
+import rs.edu.raf.userservice.security.CheckSecurity;
 import rs.edu.raf.userservice.service.UserService;
 
 import javax.validation.Valid;
@@ -65,7 +64,7 @@ public class UserController {
         return new ResponseEntity<>(userService.editProfile(authorization , updateClientDto), HttpStatus.OK);
     }
     @ApiOperation("Validate user")
-    @PutMapping("validate/{id}")
+    @GetMapping("validate/{id}")
     public ResponseEntity<Long> confirmEmailValidation(@PathVariable("id") Long id){
         return new ResponseEntity<>(userService.confirmEmailValidation(id), HttpStatus.OK);
     }

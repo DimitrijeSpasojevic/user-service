@@ -5,11 +5,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import rs.edu.raf.userservice.dto.ClientDto;
 import rs.edu.raf.userservice.dto.CreateRankDto;
 import rs.edu.raf.userservice.dto.RankDto;
 import rs.edu.raf.userservice.dto.UpdateRankDto;
-import rs.edu.raf.userservice.secutiry.CheckSecurity;
+import rs.edu.raf.userservice.security.CheckSecurity;
 import rs.edu.raf.userservice.service.RankService;
 import springfox.documentation.annotations.ApiIgnore;
 
