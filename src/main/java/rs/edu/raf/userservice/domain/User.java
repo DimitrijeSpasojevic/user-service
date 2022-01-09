@@ -2,6 +2,7 @@ package rs.edu.raf.userservice.domain;
 
 import javax.persistence.*;
 import javax.persistence.MappedSuperclass;
+import java.time.LocalDate;
 import java.util.Date;
 
 @MappedSuperclass
@@ -13,10 +14,28 @@ public class User {
     private String password;
     private String email;
     private String contact;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
     private String firstName;
     private String lastName;
     private Boolean allowedAccess;
+    private String role;
+    private Boolean emailConfirmed;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public Boolean getEmailConfirmed() {
+        return emailConfirmed;
+    }
+
+    public void setEmailConfirmed(Boolean emailConfirmed) {
+        this.emailConfirmed = emailConfirmed;
+    }
 
     public Long getUserId() {
         return userId;
@@ -58,11 +77,11 @@ public class User {
         this.contact = contact;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

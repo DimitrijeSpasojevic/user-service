@@ -1,4 +1,4 @@
-Users - id,username, password, email, kontakt_telefon, datum_rođenja, ime, prezime, zabranjen_pristup
+Users - id,email, password, email, kontakt_telefon, datum_rođenja, ime, prezime, zabranjen_pristup
 
 Klijent - br_pasosa, br_rezervacija, rank_id, user_id
 

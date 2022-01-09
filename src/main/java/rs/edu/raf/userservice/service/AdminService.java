@@ -1,9 +1,11 @@
 package rs.edu.raf.userservice.service;
 
 
+import rs.edu.raf.userservice.dto.ClientDto;
+
 public interface AdminService {
 
-    void denyAccess(Long userId);
+    ClientDto denyAccess(Long userId);
 
-    void allowAccess(Long userId);
+    ClientDto allowAccess(Long userId);
 }

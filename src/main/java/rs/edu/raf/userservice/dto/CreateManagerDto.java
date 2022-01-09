@@ -1,6 +1,8 @@
 package rs.edu.raf.userservice.dto;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class CreateManagerDto {
@@ -12,16 +14,16 @@ public class CreateManagerDto {
     private String email;
     @NotEmpty(message = "contact ne moze da bude prazno")
     private String contact;
-    @NotEmpty(message = "dateOfBirth ne moze da bude prazno")
-    private Date dateOfBirth;
+    @NotNull(message = "dateOfBirth ne moze da bude prazno")
+    private LocalDate dateOfBirth;
     @NotEmpty(message = "firstName ne moze da bude prazno")
     private String firstName;
     @NotEmpty(message = "lastName ne moze da bude prazno")
     private String lastName;
     @NotEmpty(message = "hotelName ne moze da bude prazno")
     private String hotelName;
-    @NotEmpty(message = "hireDate ne moze da bude prazno")
-    private Date hireDate;
+    @NotNull(message = "hireDate ne moze da bude prazno")
+    private LocalDate hireDate;
 
     public String getUsername() {
         return username;
@@ -55,11 +57,11 @@ public class CreateManagerDto {
         this.contact = contact;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -87,11 +89,11 @@ public class CreateManagerDto {
         this.hotelName = hotelName;
     }
 
-    public Date getHireDate() {
+    public LocalDate getHireDate() {
         return hireDate;
     }
 
-    public void setHireDate(Date hireDate) {
+    public void setHireDate(LocalDate hireDate) {
         this.hireDate = hireDate;
     }
 }

@@ -36,6 +36,8 @@ public class ManagerMapper {
         manager.setUsername(createManagerDto.getUsername());
         manager.setHotelName(createManagerDto.getHotelName());
         manager.setHireDate(createManagerDto.getHireDate());
+        manager.setRole("ROLE_MANAGER");
+        manager.setEmailConfirmed(false);
         return manager;
     }
 }

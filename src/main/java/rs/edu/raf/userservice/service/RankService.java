@@ -7,8 +7,6 @@ import rs.edu.raf.userservice.dto.UpdateRankDto;
 
 public interface RankService {
 
-    ClientDto setRankForClient(RankDto rankDto, Long clientId);
-
     RankDto addRank(CreateRankDto createRankDto);
 
     RankDto updateRank(Long rankId, UpdateRankDto updateRankDto);

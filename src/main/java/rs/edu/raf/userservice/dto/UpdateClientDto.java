@@ -1,6 +1,7 @@
 package rs.edu.raf.userservice.dto;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 public class UpdateClientDto {
@@ -12,13 +13,11 @@ public class UpdateClientDto {
     private String email;
     @NotEmpty(message = "contact ne moze da bude prazno")
     private String contact;
-    @NotEmpty(message = "dateOfBirth ne moze da bude prazno")
-    private Date dateOfBirth;
     @NotEmpty(message = "firstName ne moze da bude prazno")
     private String firstName;
     @NotEmpty(message = "lastName ne moze da bude prazno")
     private String lastName;
-    @NotEmpty(message = "passportId ne moze da bude prazno")
+    @NotNull(message = "passportId ne moze da bude prazno")
     private Long passportId;
 
     public String getUsername() {
@@ -51,14 +50,6 @@ public class UpdateClientDto {
 
     public void setContact(String contact) {
         this.contact = contact;
-    }
-
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
     }
 
     public String getFirstName() {

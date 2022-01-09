@@ -1,16 +1,16 @@
 package rs.edu.raf.userservice.dto;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class RankDto {
     private Long id;
-    @NotEmpty(message = "name ne moze da bude prazno")
+    @NotNull(message = "name ne moze da bude prazno")
     private String name;
-    @NotEmpty(message = "minReservation ne moze da bude prazno")
+    @NotNull(message = "minReservation ne moze da bude prazno")
     private Long minReservation;
-    @NotEmpty(message = "maxReservation ne moze da bude prazno")
+    @NotNull(message = "maxReservation ne moze da bude prazno")
     private Long maxReservation;
-    @NotEmpty(message = "discount ne moze da bude prazno")
+    @NotNull(message = "discount ne moze da bude prazno")
     private Long discount;
 
     public Long getId() {

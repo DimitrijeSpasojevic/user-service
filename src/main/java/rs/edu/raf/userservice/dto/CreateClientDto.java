@@ -3,6 +3,8 @@ package rs.edu.raf.userservice.dto;
 import rs.edu.raf.userservice.domain.Rank;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class CreateClientDto {
@@ -10,17 +12,17 @@ public class CreateClientDto {
     private String username;
     @NotEmpty(message = "password ne moze da bude prazno")
     private String password;
-    @NotEmpty(message = "email ne moze da bude prazno")
+    @NotNull(message = "email ne moze da bude prazno")
     private String email;
     @NotEmpty(message = "contact ne moze da bude prazno")
     private String contact;
-    @NotEmpty(message = "dateOfBirth ne moze da bude prazno")
-    private Date dateOfBirth;
+    @NotNull(message = "dateOfBirth ne moze da bude prazno")
+    private LocalDate dateOfBirth;
     @NotEmpty(message = "firstName ne moze da bude prazno")
     private String firstName;
     @NotEmpty(message = "lastName ne moze da bude prazno")
     private String lastName;
-    @NotEmpty(message = "passportId ne moze da bude prazno")
+    @NotNull(message = "passportId ne moze da bude prazno")
     private Long passportId;
 
     public String getUsername() {
@@ -55,11 +57,11 @@ public class CreateClientDto {
         this.contact = contact;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

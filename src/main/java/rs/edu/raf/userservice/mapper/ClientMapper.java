@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 import rs.edu.raf.userservice.domain.Client;
 import rs.edu.raf.userservice.dto.ClientDto;
 import rs.edu.raf.userservice.dto.CreateClientDto;
+import rs.edu.raf.userservice.exception.NotFoundException;
 import rs.edu.raf.userservice.repository.RankRepository;
 
 @Component
@@ -27,7 +28,6 @@ public class ClientMapper {
         clientDto.setDateOfBirth(client.getDateOfBirth());
         clientDto.setNumberOfReservations(client.getNumberOfReservations());
         clientDto.setPassportId(client.getPassportId());
-        clientDto.setRank(client.getRank());
         return clientDto;
     }
 
@@ -40,9 +40,10 @@ public class ClientMapper {
         client.setLastName(createClientDto.getLastName());
         client.setPassword(createClientDto.getPassword());
         client.setDateOfBirth(createClientDto.getDateOfBirth());
+        client.setRole("ROLE_CLIENT");
+        client.setEmailConfirmed(false);
         client.setNumberOfReservations(Long.valueOf(0));
         client.setPassportId(createClientDto.getPassportId());
-        client.setRank(rankRepository.findRankByMinReservation(Long.valueOf(0)));
         return client;
     }
 }

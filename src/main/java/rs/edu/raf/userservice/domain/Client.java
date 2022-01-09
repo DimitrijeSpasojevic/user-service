@@ -7,8 +7,6 @@ import javax.persistence.ManyToOne;
 public class Client extends User{
     private Long passportId;
     private Long numberOfReservations;
-    @ManyToOne
-    private Rank rank;
 
     public Long getPassportId() {
         return passportId;
@@ -26,11 +24,5 @@ public class Client extends User{
         this.numberOfReservations = numberOfReservations;
     }
 
-    public Rank getRank() {
-        return rank;
-    }
 
-    public void setRank(Rank rank) {
-        this.rank = rank;
-    }
 }

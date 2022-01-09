@@ -13,8 +13,7 @@ public class Rank {
     private Long minReservation;
     private Long maxReservation;
     private Long discount;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rank", orphanRemoval = true)
-    private List<Client> clients = new ArrayList<>();
+
 
     public String getName() {
         return name;
