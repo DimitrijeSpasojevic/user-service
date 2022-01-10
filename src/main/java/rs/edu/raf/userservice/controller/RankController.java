@@ -27,14 +27,14 @@ public class RankController {
     @ApiOperation(value = "Add rank")
     @PostMapping
     @CheckSecurity(roles = {"ROLE_MANAGER"})
-    public ResponseEntity<RankDto> addRank(@RequestBody @Valid CreateRankDto createRankDto) {
+    public ResponseEntity<RankDto> addRank(@RequestBody @Valid CreateRankDto createRankDto,@RequestHeader("authorization") String authorization) {
         return new ResponseEntity<>(rankService.addRank(createRankDto), HttpStatus.CREATED);
     }
 
     @ApiOperation(value = "Update rank")
     @PutMapping("/{id}")
     @CheckSecurity(roles = {"ROLE_MANAGER"})
-    public ResponseEntity<RankDto> updateRank(@PathVariable("id") Long id, @ApiIgnore Pageable pageable, @RequestBody @Valid UpdateRankDto updateRankDto) {
+    public ResponseEntity<RankDto> updateRank(@PathVariable("id") Long id, @ApiIgnore Pageable pageable, @RequestBody @Valid UpdateRankDto updateRankDto, @RequestHeader("authorization") String authorization) {
         return new ResponseEntity<>(rankService.updateRank(id,updateRankDto), HttpStatus.OK);
     }
 

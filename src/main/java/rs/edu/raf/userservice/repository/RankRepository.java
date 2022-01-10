@@ -10,5 +10,5 @@ import java.util.Optional;
 @Repository
 public interface RankRepository extends JpaRepository<Rank, Long> {
     Optional<Rank> findRankByMinReservation(Long minReservation);
-    Optional<Rank> findRankByMinReservationLessThanAndMaxReservationGreaterThan(Long numOfReservation, Long numLong);
+    Optional<Rank> findRankByMinReservationLessThanEqualAndMaxReservationGreaterThanEqual(Long numOfReservation, Long numLong);
 }

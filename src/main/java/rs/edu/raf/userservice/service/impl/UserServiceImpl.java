@@ -72,7 +72,7 @@ public class UserServiceImpl implements UserService {
         clientRepository.save(client);
         NotificationParameterDto notificationParameterDto1= new NotificationParameterDto("firstName",createClientDto.getFirstName());
         NotificationParameterDto notificationParameterDto2 = new NotificationParameterDto("lastName",createClientDto.getLastName());
-        NotificationParameterDto notificationParameterDto3 = new NotificationParameterDto("url", "http://localhost:8081/api/user/validate/" + client.getUserId());
+        NotificationParameterDto notificationParameterDto3 = new NotificationParameterDto("url", "http://localhost:8084/hotel-user-service/api/user/validate/" + client.getUserId());
 
         List<NotificationParameterDto> notificationParameterDtos = new ArrayList<>();
         notificationParameterDtos.add(notificationParameterDto1);
@@ -97,7 +97,7 @@ public class UserServiceImpl implements UserService {
         managerRepository.save(manager);
         NotificationParameterDto notificationParameterDto1= new NotificationParameterDto("firstName",createManagerDto.getFirstName());
         NotificationParameterDto notificationParameterDto2 = new NotificationParameterDto("lastName",createManagerDto.getLastName());
-        NotificationParameterDto notificationParameterDto3 = new NotificationParameterDto("url", "http://localhost:8081/api/user/validate/" + manager.getUserId());
+        NotificationParameterDto notificationParameterDto3 = new NotificationParameterDto("url", "http://localhost:8084/hotel-user-service/api/user/validate/" + manager.getUserId());
         List<NotificationParameterDto> notificationParameterDtos = new ArrayList<>();
         notificationParameterDtos.add(notificationParameterDto1);
         notificationParameterDtos.add(notificationParameterDto2);
@@ -190,7 +190,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public RankDto getRankForClient(Long clientId) {
         Client client = clientRepository.getById(clientId);
-        Rank rank = rankRepository.findRankByMinReservationLessThanAndMaxReservationGreaterThan(client.getNumberOfReservations(), client.getNumberOfReservations())
+        Rank rank = rankRepository.findRankByMinReservationLessThanEqualAndMaxReservationGreaterThanEqual(client.getNumberOfReservations(), client.getNumberOfReservations())
                 .orElseThrow(() -> new NotFoundException(String.format("Rank koji obuhvata date opsege ne postoji")));
         return rankMapper.rankToRankDto(rank);
     }

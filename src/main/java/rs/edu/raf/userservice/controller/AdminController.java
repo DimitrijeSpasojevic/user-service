@@ -23,14 +23,14 @@ public class AdminController {
     @ApiOperation(value = "deny access")
     @PutMapping("/deny/{id}")
     @CheckSecurity(roles = {"ROLE_ADMIN"})
-    public ResponseEntity<ClientDto> denyAccess(@PathVariable("id") Long id, @ApiIgnore Pageable pageable) {
+    public ResponseEntity<ClientDto> denyAccess(@PathVariable("id") Long id, @ApiIgnore Pageable pageable,@RequestHeader("authorization") String authorization) {
         return new ResponseEntity<>(adminService.denyAccess(id), HttpStatus.OK);
     }
 
     @ApiOperation(value = "allow access")
     @PutMapping("/allow/{id}")
     @CheckSecurity(roles = {"ROLE_ADMIN"})
-    public ResponseEntity<ClientDto> allowAccess(@PathVariable("id") Long id, @ApiIgnore Pageable pageable) {
+    public ResponseEntity<ClientDto> allowAccess(@PathVariable("id") Long id, @ApiIgnore Pageable pageable,@RequestHeader("authorization") String authorization) {
         return new ResponseEntity<>(adminService.allowAccess(id), HttpStatus.OK);
     }
 
