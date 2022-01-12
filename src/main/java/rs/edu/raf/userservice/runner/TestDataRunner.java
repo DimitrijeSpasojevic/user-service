@@ -29,7 +29,7 @@ public class TestDataRunner implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Rank rank1 = new Rank();
         rank1.setName("Bronza");
-        rank1.setDiscount(Long.valueOf(0));
+        rank1.setDiscount(Long.valueOf(10));
         rank1.setMinReservation(Long.valueOf(0));
         rank1.setMaxReservation(Long.valueOf(20));
         rankRepository.save(rank1);

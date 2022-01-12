@@ -24,7 +24,6 @@ public class UserController {
         this.userService = userService;
     }
 
-
     @ApiOperation(value = "Get All clients")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "page", value = "What page number you want", dataType = "string", paramType = "query"),
@@ -35,7 +34,8 @@ public class UserController {
                             "Multiple sort criteria are supported.")})
 
     @GetMapping
-    public ResponseEntity<Page<ClientDto>> findAllClients(Pageable pageable){
+    @CheckSecurity(roles = {"ROLE_ADMIN"})
+    public ResponseEntity<Page<ClientDto>> findAllClients(Pageable pageable, @RequestHeader("authorization") String authorization){
         return new ResponseEntity<>(userService.findAllClients(pageable), HttpStatus.OK);
     }
 
@@ -70,22 +70,26 @@ public class UserController {
     }
 
     @PutMapping("/{id}/reservation")
-    public ResponseEntity<Long> addReservation(@PathVariable("id") Long clientId) {
+    @CheckSecurity(roles = {"ROLE_CLIENT", "ROLE_MANAGER"})
+    public ResponseEntity<Long> addReservation(@PathVariable("id") Long clientId, @RequestHeader("authorization") String authorization) {
         return new ResponseEntity<>(userService.addReservation(clientId), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}/reservation")
-    public ResponseEntity<Long> deleteReservation(@PathVariable("id") Long clientId) {
+    @CheckSecurity(roles = {"ROLE_CLIENT", "ROLE_MANAGER"})
+    public ResponseEntity<Long> deleteReservation(@PathVariable("id") Long clientId, @RequestHeader("authorization") String authorization) {
         return new ResponseEntity<>(userService.deleteReservation(clientId), HttpStatus.OK);
     }
 
     @GetMapping("/{id}/rank")
-    public ResponseEntity<RankDto> getRankForClient(@PathVariable("id") Long userId){
+    @CheckSecurity(roles = {"ROLE_CLIENT", "ROLE_MANAGER"})
+    public ResponseEntity<RankDto> getRankForClient(@PathVariable("id") Long userId, @RequestHeader("authorization") String authorization){
         return new ResponseEntity<>(userService.getRankForClient(userId),HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ClientDto> getClient(@PathVariable("id") Long clientId){
+    @CheckSecurity(roles = {"ROLE_CLIENT", "ROLE_MANAGER"})
+    public ResponseEntity<ClientDto> getClient(@PathVariable("id") Long clientId, @RequestHeader("authorization") String authorization){
         return new ResponseEntity<>(userService.getClient(clientId),HttpStatus.OK);
     }
 
